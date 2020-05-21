@@ -1,5 +1,6 @@
 <template>
-  <div>fjbjf
+  <div>
+    <h1>Home</h1>
     <v-card
       class="mx-auto"
       max-width="344"
@@ -56,8 +57,8 @@ export default {
   },
 
   async asyncData({ $axios }) {
-    const ip = await $axios.$get('http://icanhazip.com')
-    return { ip }
+    // const ip = await $axios.$get('http://icanhazip.com')
+    // return { ip }
   },
 
   async created() {
