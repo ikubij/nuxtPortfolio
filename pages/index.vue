@@ -29,7 +29,6 @@
       </v-card-actions>
     </v-card>
 
-    <v-divider></v-divider>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>About</h1>
-    <v-divider></v-divider>
+    
   </div>
 </template>
 

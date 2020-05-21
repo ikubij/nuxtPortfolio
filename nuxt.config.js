@@ -1,3 +1,4 @@
+const axios = require("axios");
 
 export default {
   mode: 'spa',
@@ -40,7 +41,34 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
+    [
+      "storyblok-nuxt",
+      {
+        accessToken:
+          process.env.NODE_ENV == "production"
+            ? "QM50RQebTND7J0tdNAkDlAtt"
+            : "0kTUbUnb8rJ2gnC2zWxNlQtt",
+        cacheProvider: "memory"
+      }
+    ]
   ],
+
+  generate: {
+    routes: function() {
+      return axios.get(
+        "https://api.storyblok.com/v1/cdn/stories?version=published&token=QM50RQebTND7J0tdNAkDlAtt&starts_with=projects&cv=" +
+          Math.floor(Date.now() / 1e3)
+      )
+      .then(res => {
+        const projectPortfolio = res.data.stories.map(project => project.full_slug);
+        return [
+          '/projects',
+          ...projectPortfolio
+        ]
+      });
+    }
+  },
+
   axios: {
     // proxyHeaders: false
   },

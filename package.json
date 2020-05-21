@@ -19,6 +19,7 @@
     "firebase": "^7.14.4",
     "mongodb": "^3.5.7",
     "nuxt": "^2.0.0",
+    "storyblok-nuxt": "^1.2.0",
     "vuetify": "^2.2.28"
   },
   "devDependencies": {
