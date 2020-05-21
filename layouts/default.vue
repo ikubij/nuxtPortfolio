@@ -13,7 +13,7 @@
     </v-content>
 
     <v-footer app>
-      djjjjjjjjjjjj
+      Made with love
     </v-footer>
   
   </v-app>
