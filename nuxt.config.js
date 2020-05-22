@@ -72,6 +72,19 @@ export default {
     }
   },
 
+  generate2: {
+    routes: function() {
+      return axios.get("api/")
+      .then(res => {
+        const expD = res.data;
+        return [
+          '/about',
+          ...expD
+        ]
+      });
+    }
+  },
+
   axios: {
     // proxyHeaders: false
   },
