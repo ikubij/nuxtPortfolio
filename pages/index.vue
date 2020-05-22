@@ -69,7 +69,7 @@ export default {
     try {
       const res = await axios.get("https://icanhazdadjoke.com/search", config);
       this.jokes = res.data.results;
-      console.log(this.jokes);
+      // console.log(this.jokes);
     } catch (err) {
       console.log(err);
     }
