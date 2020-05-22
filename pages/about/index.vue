@@ -35,7 +35,7 @@ export default {
     // return { ip }
   },
 
-  async mounted() {
+  async created() {
     // const config = {
     //   headers: {
     //     Accept: "application/json"
