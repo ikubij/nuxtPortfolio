@@ -1,4 +1,4 @@
-<template>
+<template >
   <div>
     <v-card
       class="mx-auto mb-6"
@@ -52,7 +52,12 @@
 
           <v-card-text>
             <!-- <p><span v-html="description"></span></p> -->
+             <div v-html="description"></div>
               {{description}}
+              <markdown 
+                :markdown="description"
+              >
+              </markdown>
           </v-card-text>
         </div>
       </v-expand-transition>
@@ -61,8 +66,12 @@
 </template>
 
 <script>
+import Markdown from "../../../components/Markdown";
 
 export default {
+  components: {
+    Markdown,
+  },
   head() {
     return {
       title: "James Web developer",
@@ -90,13 +99,17 @@ export default {
         version: context.isDev ? "draft" : "published",
       })
       .then(res => {
+        var richDesc=res.data.story.content.description;
+        var renderedDesc=context.app.$storyapi.richTextResolver.render(richDesc);
+        // console.log(richDesc)
+        // console.log(renderedDesc)
         return {
             blok: res.data.story.content,
             id: res.data.story.content.slug,
             title: res.data.story.content.title,
             thumbnail: res.data.story.content.thumbnail,
             skills: res.data.story.content.skills,
-            description: res.data.story.content.description,
+            description: renderedDesc,
             githubLink: res.data.story.content.githubLink,
             link: res.data.story.content.link,
             images: res.data.story.content.images,
@@ -108,7 +121,7 @@ export default {
     this.$storybridge.on("change", () => {
       location.reload(true);
     });
-  }
+  },
 
 };
 </script>
