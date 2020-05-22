@@ -1,9 +1,15 @@
 <template>
+<transition name="fade" mode="out-in">
   <div>
     <h1>About</h1>
     {{expressServer}}
+
+    <v-btn @click="insertPost" color="orange">
+      Insert Post
+    </v-btn>
     
   </div>
+</transition>
 </template>
 
 <script>
@@ -23,6 +29,11 @@ export default {
     };
   },
 
+  transition (to, from) {
+    if (!from) { return 'slide-left' }
+    return +to.query.page < +from.query.page ? 'slide-right' : 'slide-left'
+  },
+
   data() {
     return {
       jokes: [],
@@ -30,24 +41,29 @@ export default {
     };
   },
 
-  async asyncData({ $axios }) {
-    // const ip = await $axios.$get('http://icanhazip.com')
-    // return { ip }
+  async asyncData(context) {
+    
   },
 
   async created() {
-    // const config = {
-    //   headers: {
-    //     Accept: "application/json"
-    //   }
-    // };
-    try {
-      const res = await axios.get("/api/");
-      this.expressServer = res.data;
-      // console.log(this.expressServer);
-    } catch (err) {
-      console.log(err);
-    }
+    this.getPosts();
   },
+
+  methods:{
+    async getPosts(){
+      try {
+        const res = await axios.get("/api/posts/");
+        this.expressServer = res.data;
+        // console.log(this.expressServer);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    insertPost(){
+      axios.post("/api/posts/")
+      this.getPosts();
+    }
+  }
 };
 </script>

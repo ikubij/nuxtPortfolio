@@ -73,11 +73,11 @@
         },
         {
           name:'About',
-          link:'about'
+          link:'/about'
         },
         {
           name:'Projects',
-          link:'projects'
+          link:'/projects'
         },
       ],
     }),

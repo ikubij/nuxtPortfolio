@@ -74,7 +74,7 @@ export default {
 
   generate2: {
     routes: function() {
-      return axios.get("api/")
+      return axios.get("/api/posts/")
       .then(res => {
         const expD = res.data;
         return [
