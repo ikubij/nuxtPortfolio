@@ -42,19 +42,38 @@ export default {
   },
 
   async asyncData(context) {
+    // console.log(context.api.get('posts'))
+    // const res =  context.$axios.$get("posts/");
+        // console.log(res.data);
     
   },
 
   async created() {
-    this.getPosts();
+    this.getLaravelPosts();
+    this.getExpressPosts();
   },
 
   methods:{
-    async getPosts(){
+    async getExpressPosts(){
       try {
         const res = await axios.get("/api/posts/");
         this.expressServer = res.data;
         // console.log(this.expressServer);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    async getLaravelPosts(){
+      try {
+        const config = {
+          headers: {
+            Accept: "application/json",
+            // crossdomain: true
+          }
+        };
+        const res = await this.$axios.get("posts/");
+        console.log(res.data);
       } catch (err) {
         console.log(err);
       }

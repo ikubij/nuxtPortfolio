@@ -33,6 +33,7 @@ export default {
   */
   plugins: [
     '@plugins/vuetify',
+    // '~plugins/axios',
   ],
   /*
   ** Nuxt.js dev-modules
@@ -56,6 +57,13 @@ export default {
       }
     ]
   ],
+
+  axios: {
+    // baseURL:"http://127.0.0.1:8000/api/",
+    baseURL:"https://still-basin-44819.herokuapp.com/api/",
+    // proxyHeaders: false,
+    // credentials: false
+  },
 
   generate: {
     routes: function() {
@@ -86,9 +94,6 @@ export default {
     }
   },
 
-  axios: {
-    // proxyHeaders: false
-  },
   /*
   ** Build configuration
   */

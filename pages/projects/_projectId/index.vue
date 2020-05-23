@@ -101,7 +101,7 @@ export default {
       .then(res => {
         var richDesc=res.data.story.content.description;
         var renderedDesc=context.app.$storyapi.richTextResolver.render(richDesc);
-        // console.log(richDesc)
+        // console.log(res)
         // console.log(renderedDesc)
         return {
             blok: res.data.story.content,
@@ -121,6 +121,21 @@ export default {
     this.$storybridge.on("change", () => {
       location.reload(true);
     });
+
+    const doc = {
+      type: 'doc',
+      content: [
+        {
+          type: 'rich_text',
+          content: [{
+            text: '***code***',
+            type: 'text'
+          }]
+        }
+      ]
+    }
+    var renderedDesc=this.$storyapi.richTextResolver.render(doc);
+    console.log(renderedDesc)
   },
 
 };
