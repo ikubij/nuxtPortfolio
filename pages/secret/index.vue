@@ -1,7 +1,7 @@
 <template>
 <transition name="fade" mode="out-in">
   <div>
-    <h1>About</h1>
+    <h1>Secret</h1>
     {{expressServer}}
 
     <v-btn @click="insertPost" color="orange">
@@ -16,6 +16,7 @@
 import axios from "axios";
 
 export default {
+  middleware: 'auth',
   head() {
     return {
       title: "James Web developer",

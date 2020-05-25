@@ -33,6 +33,7 @@ export default {
   */
   plugins: [
     '@plugins/vuetify',
+    '@plugins/mixins/user'
     // '~plugins/axios',
   ],
   /*
@@ -43,8 +44,25 @@ export default {
   /*
   ** Nuxt.js modules
   */
+ auth: {
+  strategies: {
+    local: {
+      login: { url: 'auth/login', method: 'post', propertyName: 'access_token' },
+      logout: { url: 'auth/logout', method: 'post' },
+      user: { url: 'auth/me', method: 'post', propertyName: 'user' }
+      },
+  },
+  redirect: {
+    login: '/secret/login',
+    home:'/'
+  },
+  plugins: [
+    '@/plugins/authRedirectHeader'
+  ]
+ },
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/auth',
     '@nuxtjs/markdownit',
     [
       "storyblok-nuxt",
@@ -59,8 +77,8 @@ export default {
   ],
 
   axios: {
-    // baseURL:"http://127.0.0.1:8000/api/",
-    baseURL:"https://still-basin-44819.herokuapp.com/api/",
+    baseURL:"http://127.0.0.1:8000/api/",
+    // baseURL:"https://still-basin-44819.herokuapp.com/api/",
     // proxyHeaders: false,
     // credentials: false
   },
