@@ -98,9 +98,15 @@
         email: '',
         password: '',
       }, 
+      previousPage:null,
       show: false,
       loading:false,
     }),
+    beforeRouteEnter(to, from, next) {
+      next(vm => {
+        vm.previousPage = from
+      })
+    },
 
     methods: {
       login () {
@@ -110,7 +116,12 @@
               this.$auth.login({data:this.form})       
               .then(response => {
                   this.loading=false
-                  this.$router.push(this.$router.query.redirect ? this.$route.query.redirect : '/'); 
+                  // this.$router.push(this.$router.query.redirect ? this.$route.query.redirect : '/'); 
+                  if(this.previousPage.name!='about' && this.previousPage!==null){
+                    this.$router.back()
+                  }else{
+                    this.$router.push({name:'about'});         
+                  }
               })
             }
         })

@@ -49,7 +49,7 @@ export default {
     local: {
       login: { url: 'auth/login', method: 'post', propertyName: 'access_token' },
       logout: { url: 'auth/logout', method: 'post' },
-      user: { url: 'auth/me', method: 'post', propertyName: 'user' }
+      user: { url: 'auth/user', method: 'get', propertyName: 'user' }
       },
   },
   redirect: {
@@ -77,8 +77,9 @@ export default {
   ],
 
   axios: {
+    // baseURL:"http://127.0.0.1:8000/",
     // baseURL:"http://127.0.0.1:8000/api/",
-    baseURL:"https://still-basin-44819.herokuapp.com/api/",
+    baseURL:"https://still-basin-44819.herokuapp.com/",
     // proxyHeaders: false,
     // credentials: false
   },

@@ -72,7 +72,7 @@ export default {
             crossDomain: true
           }
         };
-        const res = await this.$axios.get("posts/",config);
+        const res = await this.$axios.get("/api/posts/");
         console.log(res.data);
       } catch (err) {
         console.log(err);
