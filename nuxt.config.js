@@ -88,7 +88,7 @@ export default {
   generate: {
     routes: function() {
       return axios.get(
-        "https://api.storyblok.com/v1/cdn/stories?version=published&token=QM50RQebTND7J0tdNAkDlAtt&starts_with=projects&cv=" +
+        `https://api.storyblok.com/v1/cdn/stories?version=published&token=${process.env.STORYBLOK_PRODUCTION_KEY}&starts_with=projects&cv=` +
           Math.floor(Date.now() / 1e3)
       )
       .then(res => {
