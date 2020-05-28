@@ -37,6 +37,7 @@ export default {
     '@plugins/mixins/user'
     // '~plugins/axios',
   ],
+
   /*
   ** Nuxt.js dev-modules
   */
@@ -49,7 +50,7 @@ export default {
  auth: {
   strategies: {
     local: {
-      login: { url: 'auth/login', method: 'post', propertyName: 'access_token' },
+      login: { url: 'auth/login', method: 'post', propertyName: 'token' },
       logout: { url: 'auth/logout', method: 'post' },
       user: { url: 'auth/user', method: 'get', propertyName: 'user' }
       },
@@ -58,9 +59,6 @@ export default {
     login: '/secret/login',
     home:'/'
   },
-  plugins: [
-    '@/plugins/authRedirectHeader'
-  ]
  },
   modules: [
     '@nuxtjs/axios',
@@ -79,7 +77,7 @@ export default {
   ],
 
   axios: {
-    baseURL:process.env.LOCALHOST_PATH,
+    baseURL:process.env.API_PATH,
     // baseURL: process.env.HEROKU_PATH,
     // proxyHeaders: false,
     // credentials: false

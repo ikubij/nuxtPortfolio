@@ -81,7 +81,7 @@ export default {
 
     insertPost(){
       axios.post("/api/posts/")
-      this.getPosts();
+      this.getExpressPosts();
     }
   }
 };

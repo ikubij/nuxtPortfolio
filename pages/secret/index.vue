@@ -3,6 +3,9 @@
   <div>
     <h1>Secret</h1>
     {{authenticated}}
+    <v-btn @click="logout" color="red">
+      Logout
+    </v-btn>
 
     <br/>
 
@@ -22,6 +25,7 @@ import axios from "axios";
 
 export default {
   middleware: 'auth',
+  
   head() {
     return {
       title: "James Web developer",
@@ -87,7 +91,11 @@ export default {
 
     insertPost(){
       axios.post("/api/posts/")
-      this.getPosts();
+      this.getExpressPosts();
+    },
+
+    logout(){
+      this.$auth.logout();
     }
   }
 };

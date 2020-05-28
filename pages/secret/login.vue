@@ -89,10 +89,12 @@
 
   export default {
     middleware: 'guest',
+
     components: {
       ValidationProvider,
       ValidationObserver,
     },
+
     data: () => ({
       form: {
         email: '',
@@ -113,10 +115,9 @@
         this.loading=true
         this.$refs.observer.validate().then(success => {
             if (success) {
-              this.$auth.login({data:this.form})       
+              this.$auth.login({data:this.form})    
               .then(response => {
                   this.loading=false
-                  // this.$router.push(this.$router.query.redirect ? this.$route.query.redirect : '/'); 
                   if(this.previousPage.name!='about' && this.previousPage!==null){
                     this.$router.back()
                   }else{
@@ -129,11 +130,16 @@
       },
 
       clear () {
+        console.log(this.$auth.user)
         this.loading=false
         this.form.email = ''
         this.form.password = ''
         this.$refs.observer.reset()
       },
+
+      async fetchuser(){
+        return await this.$auth.fetchUser()
+      }
     },
   }
 </script>

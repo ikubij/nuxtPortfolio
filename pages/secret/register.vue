@@ -146,7 +146,7 @@
         this.loading=true
         this.$refs.observer.validate().then(success => {
             if (success) {
-                this.$axios.post('/auth/register', this.form)
+                this.$axios.post('api/auth/register', this.form)
                 .then(response => {
                     this.$auth.login({data:this.form})         
                     .then(response => {
