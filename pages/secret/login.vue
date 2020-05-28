@@ -115,8 +115,10 @@
         this.loading=true
         this.$refs.observer.validate().then(success => {
             if (success) {
-              this.$auth.login({data:this.form})    
+              // this.$auth.login({data:this.form}) 
+              this.$axios.post('api/auth/login', this.form)   
               .then(response => {
+                console.log(response)
                   this.loading=false
                   if(this.previousPage.name!='about' && this.previousPage!==null){
                     this.$router.back()
