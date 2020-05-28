@@ -79,8 +79,8 @@ export default {
   ],
 
   axios: {
-    // baseURL:"process.env.LOCALHOST_PATH",
-    baseURL: process.env.HEROKU_PATH,
+    baseURL:process.env.LOCALHOST_PATH,
+    // baseURL: process.env.HEROKU_PATH,
     // proxyHeaders: false,
     // credentials: false
   },
