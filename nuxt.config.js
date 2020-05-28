@@ -1,4 +1,5 @@
 const axios = require("axios");
+require('dotenv').config()
 
 export default {
   mode: 'spa',
@@ -40,6 +41,7 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/dotenv',
   ],
   /*
   ** Nuxt.js modules
@@ -69,8 +71,8 @@ export default {
       {
         accessToken:
           process.env.NODE_ENV == "production"
-            ? "QM50RQebTND7J0tdNAkDlAtt"
-            : "0kTUbUnb8rJ2gnC2zWxNlQtt",
+            ? process.env.STORYBLOK_PRODUCTION_KEY
+            : process.env.STORYBLOK_PREVIEW_KEY,
         cacheProvider: "memory"
       }
     ]

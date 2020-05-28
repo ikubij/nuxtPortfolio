@@ -17,6 +17,7 @@
     "@nuxtjs/markdownit": "^1.2.9",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "firebase": "^7.14.4",
     "mongodb": "^3.5.7",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@mdi/font": "^5.2.45",
+    "@nuxtjs/dotenv": "^1.4.1",
     "material-design-icons-iconfont": "^5.0.1",
     "node-sass": "^4.14.1",
     "nodemon": "^2.0.4",
