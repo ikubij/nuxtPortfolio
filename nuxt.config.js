@@ -79,9 +79,8 @@ export default {
   ],
 
   axios: {
-    // baseURL:"http://127.0.0.1:8000/",
-    // baseURL:"http://127.0.0.1:8000/api/",
-    baseURL:"https://still-basin-44819.herokuapp.com/",
+    // baseURL:"hprocess.env.LOCALHOST_PATH",
+    baseURL:"process.env.HEROKU_PATH",
     // proxyHeaders: false,
     // credentials: false
   },
