@@ -1,6 +1,11 @@
 <template>
   <div>
     <h1>Home</h1>
+
+      <v-btn @click="followSherlock" color="green">
+        Follow shelock
+      </v-btn>
+
     <v-card
       class="mx-auto"
       max-width="344"
@@ -69,10 +74,32 @@ export default {
     try {
       const res = await axios.get("https://icanhazdadjoke.com/search", config);
       this.jokes = res.data.results;
+      this.hijackPista();
       // console.log(this.jokes);
     } catch (err) {
       console.log(err);
     }
   },
+
+  methods:{
+    async hijackPista(){
+      try {
+        const config = {
+          headers: {
+            Accept: "application/json",
+            crossDomain: true
+          }
+        };
+        const res = await this.$axios.get("https://api.trackseries.tv/v1/Series/Search?query=how%20to%20get%20away");
+        console.log(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    async followSherlock(){
+      await axios.post("https://api.trackseries.tv/v1/Follow/Series/121361")
+    }
+  }
 };
 </script>

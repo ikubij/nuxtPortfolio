@@ -78,7 +78,6 @@ export default {
 
   axios: {
     baseURL:process.env.API_PATH,
-    // baseURL: process.env.HEROKU_PATH,
     // proxyHeaders: false,
     // credentials: false
   },
